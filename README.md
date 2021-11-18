@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @Saneliso Mzwakali
-- 🌱 I’m currently learning on Data Analysis ptoject...
+- Hulu 2.0 with REACT.JS! (Next.js, Tailwind CSS,api, Responsive)
 
 <!---
 Sanelisow/Sanelisow is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
