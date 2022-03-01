@@ -1,41 +1,46 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import Nav from "../components/Nav";
-import Results from "../components/Results"
-import requests from "../utils/requests";
-import Thumbnail from "../components/Thumbnail";
+import Banner from "../components/Banner";
+import ProductFeed from "../components/ProductFeed"
 
-export default function Home({results}) {
-  
+
+export default function Home({products}) {
   return (
-    <div>
+    <div className="bg-gray-100 " >
       <Head>
-        <title>Movie App</title>
-        <link rel="icon" href="/favicon.ico"/>
-  
+        <title>Amazon 2.0</title>
       </Head>
-     
-      <Header />
-      <Nav/>
-      <Results results={results}/>
 
-      </div>
-      
-  );
+      {/* ---- TO BEGIN ---- */}
+        {/* ---- HEADER ---- */}
+        <Header/>
+        
+         
+        <main className="max-w-screen-2xl mx-auto">
+          {/* ---- BANNER ---- */}
+          <Banner />
+          
+          {/* ---- Products ---- */}
+          <ProductFeed products={products}/>
+         
+
+
+        </main>
+   
+      {/* ---- ---- */}
+    </div>
+  ); 
 }
-
-// server side redering
-export async function getServerSideProps(context) {
-  const genre = context.query.genre;
-
-  const request = await fetch(
-    `https://api.themoviedb.org/3${
-      requests[genre]?.url||requests.fetchTrending.url
-    }`
-  ).then((res) => res.json());
-  return {
-    props:{
-      results: request.results,
+{/* ---- Server side rendernig ---- */}
+export async function getServerSideProps(context){
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+   return {props:{
+     products,
     },
   };
+
 }
+
+// GET >>>  https://fakestoreapi.com/products
